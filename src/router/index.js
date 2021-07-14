@@ -25,8 +25,8 @@ const routes = [
         path:'/',
         name:'Home',
         component: Home,
-        props: (route) => ({
-            query: route.query.response
+        props: (Home) => ({
+            query: Home.query.response
         })
     }
 ]

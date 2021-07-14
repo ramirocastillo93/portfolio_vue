@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="container">
-            <img class="picture mx-auto d-block" :src="response.basics.picture" alt="" >
+            <img class="w-25 mx-auto d-block" :src="response.basics.picture" alt="" >
             <h1 class="display-5">{{ response.basics.name }}</h1>
             <h4>{{ response.basics.label }}</h4>
         </div>
@@ -41,8 +41,7 @@ export default {
 </script>
 
 <style scoped>
-    .picture {
-        border-radius: 50%;
-        height: 200px;
+    img {
+        border-radius: 50% !important;
     }
 </style>

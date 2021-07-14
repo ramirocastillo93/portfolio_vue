@@ -1,10 +1,13 @@
 <template>
-  <!-- <Nav />
-  <router-view></router-view> -->
   <Nav />
-  <div class="post">
-    <div v-if="loading" class="loading">
-      Cargando...
+  <div>
+    <div v-if="loading" class="loading m-5">
+      <div class="d-flex justify-content-center m-5">
+        <strong>Loading...</strong>
+        <div class="spinner-border spinner-border-sm" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
     </div>
 
     <div v-if="error" class="error">
@@ -28,7 +31,6 @@ export default {
   data() {
         return {
           loading: false,
-          // response: {},
           response: null,
           error: null
         }
@@ -48,7 +50,7 @@ export default {
         this.getData()
     },
     // watch: {
-    //   $route: 'fetchData'
+    //   $route: 'Home'
     // }
 }
 </script>
