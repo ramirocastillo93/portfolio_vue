@@ -1,32 +1,55 @@
 <template>
-  <Header :response="this.response"/>
+  <!-- <Nav />
+  <router-view></router-view> -->
+  <Nav />
+  <div class="post">
+    <div v-if="loading" class="loading">
+      Cargando...
+    </div>
+
+    <div v-if="error" class="error">
+      {{ error }}
+    </div>
+
+    <div v-if="response" class="content">
+      <router-view></router-view>
+    </div>
+  </div>
 </template>
 
 <script>
-import Header from './components/Header'
+import Nav from './components/Nav'
 
 export default {
   name: 'App',
   components: {
-    Header,
+    Nav
   },
   data() {
         return {
-            response: null
+          loading: false,
+          // response: {},
+          response: null,
+          error: null
         }
     },
     methods: {
         async getData() {
-            const res = await fetch('https://gitconnected.com/v1/portfolio/ramirocastillo93')
-            const data = await res.json()
-
-            this.response = data
-            console.log(data)
+          this.error = this.post = null
+          this.loading = true
+          const res = await fetch('https://gitconnected.com/v1/portfolio/ramirocastillo93')
+          const data = await res.json()
+          this.response = data
+          this.loading = false
+          // console.log(data)
         }
     },
-    beforeMount(){
+    created(){
         this.getData()
-    }
+    },
+    // watch: {
+    //   $route: 'fetchData'
+    // }
 }
 </script>
 
